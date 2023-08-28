@@ -1,4 +1,7 @@
 package com.example.booking;
+
+import androidx.annotation.NonNull;
+
 public class Contact {
     
     long _ID;
@@ -43,6 +46,7 @@ public class Contact {
         this.phone = phone;
     }
     
+    @NonNull
     @Override
     public String toString() {
         return
