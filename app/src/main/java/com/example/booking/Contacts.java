@@ -24,7 +24,7 @@ public class Contacts extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_contacts,container,false);
         
-        dbHelper = new DBHandler((MainActivity) getActivity());
+        dbHelper = new DBHandler( getActivity());
         
         db = dbHelper.getWritableDatabase();
         

@@ -22,6 +22,7 @@ public class AddContact extends Fragment {
     Button button_add_contact;
     Button button_update_contact;
     Button button_delete_contact;
+    View v;
     
     DBHandler dbHandler;
     SQLiteDatabase db;
@@ -29,17 +30,17 @@ public class AddContact extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_add_contact,container,false);
+        v = inflater.inflate(R.layout.fragment_add_contact,container,false);
         dbHandler = new DBHandler(getActivity());
         db = dbHandler.getWritableDatabase();
     
-        initButtons(v);
-        initTextFields(v);
+        initButtons();
+        initTextFields();
         
         return v;
     }
     
-    private void initButtons(View v) {
+    private void initButtons() {
         button_add_contact = v.findViewById(R.id.button_add_contact);
         button_update_contact = v.findViewById(R.id.button_update_contact);
         button_delete_contact = v.findViewById(R.id.button_delete_contact);
@@ -49,7 +50,7 @@ public class AddContact extends Fragment {
         button_delete_contact.setOnClickListener(v1 -> deleteContact());
     }
     
-    private void initTextFields(View v) {
+    private void initTextFields() {
         this.name = v.findViewById(R.id.input_name);
         this.phone = v.findViewById(R.id.input_phone);
         this.id = v.findViewById(R.id.input_id);

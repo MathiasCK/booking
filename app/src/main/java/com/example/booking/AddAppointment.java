@@ -23,23 +23,24 @@ public class AddAppointment extends Fragment {
     Button button_add_appointment;
     Button button_update_appointment;
     Button button_delete_appointment;
+    View v;
     DBHandler dbHandler;
     SQLiteDatabase db;
     
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_add_appointment, container, false);
+        v = inflater.inflate(R.layout.fragment_add_appointment, container, false);
         dbHandler = new DBHandler(getActivity());
         db = dbHandler.getWritableDatabase();
         
-        initButtons(v);
-        initTextFields(v);
+        initButtons();
+        initTextFields();
         
         return v;
     }
     
-    private void initButtons(View v) {
+    private void initButtons() {
         button_add_appointment = v.findViewById(R.id.button_add_appointment);
         button_update_appointment = v.findViewById(R.id.button_update_appointment);
         button_delete_appointment = v.findViewById(R.id.button_delete_appointment);
@@ -74,7 +75,7 @@ public class AddAppointment extends Fragment {
         long _ID = Long.parseLong(this.id.getText().toString());
         dbHandler.deleteAppointment(db, _ID);
     }
-    private void initTextFields(View v) {
+    private void initTextFields() {
         this.date = v.findViewById(R.id.input_date);
         this.place = v.findViewById(R.id.input_place);
         this.message = v.findViewById(R.id.input_message);
