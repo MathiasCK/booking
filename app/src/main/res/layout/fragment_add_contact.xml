@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/lbl_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Skriv inn navn" />
+
+    <EditText
+        android:id="@+id/input_name"
+        android:layout_below="@+id/lbl_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/lbl_phone"
+        android:layout_below="@+id/input_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Skriv inn telfonnummer" />
+    <EditText
+        android:id="@+id/input_phone"
+        android:layout_below="@+id/lbl_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/lbl_id"
+        android:layout_below="@+id/input_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Skriv inn id" />
+    <EditText
+        android:layout_below="@+id/lbl_id"
+        android:id="@+id/input_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_below="@+id/input_id"
+        android:id="@+id/button_add_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="addContact"
+        android:text="Legg til"/>
+    <Button
+        android:id="@+id/button_delete_contact"
+        android:layout_below="@+id/button_add_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="deleteContact"
+        android:text="Slett" />
+
+    <Button
+        android:id="@+id/button_update_contact"
+        android:layout_below="@+id/button_delete_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="updateContact"
+        android:text="Oppdater" />
+
+</RelativeLayout>
