@@ -63,7 +63,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
     
     public List<Contact> listContacts(SQLiteDatabase db) {
-        List<Contact> contacts = new ArrayList<Contact>();
+        List<Contact> contacts = new ArrayList<>();
         String selectQuery = "SELECT * FROM " + TABLE_CONTACTS;
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) { do {
@@ -77,12 +77,12 @@ public class DBHandler extends SQLiteOpenHelper {
     }
     
     public List<Appointment> listAppointments(SQLiteDatabase db) {
-        List<Appointment> appointments = new ArrayList<Appointment>();
+        List<Appointment> appointments = new ArrayList<>();
         String selectQuery = "SELECT * FROM " + TABLE_APPOINTMENTS;
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) { do {
             Appointment appointment = new Appointment();
-            appointment.set_ID(cursor.getLong(0));;
+            appointment.set_ID(cursor.getLong(0));
             appointment.setPlace(cursor.getString(1));
             appointment.setMessage(cursor.getString(2));
             appointment.setDate(cursor.getString(3));
