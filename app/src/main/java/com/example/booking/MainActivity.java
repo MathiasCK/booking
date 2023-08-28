@@ -29,9 +29,25 @@ public class MainActivity extends AppCompatActivity {
         //bottomNavigation = findViewById(R.id.nav);
         
         
-        Button button = findViewById(R.id.button);
+        Button button_appointments = findViewById(R.id.button_appointments);
+        Button button_add_appointment = findViewById(R.id.button_add_appointment);
+        Button button_contacts = findViewById(R.id.button_contacts);
+        Button button_add_contact = findViewById(R.id.button_add_contact);
     
-        button.setOnClickListener(new View.OnClickListener() {
+        button_appointments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment newFragment = new Fragment(R.layout.fragment_appointments); // Create an instance of the new fragment
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            
+                transaction.replace(R.id.fragment_container, newFragment);
+            
+                transaction.addToBackStack(null);
+            
+                transaction.commit();
+            }
+        });
+        button_add_appointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Fragment newFragment = new Fragment(R.layout.fragment_add_appointment); // Create an instance of the new fragment
@@ -41,6 +57,33 @@ public class MainActivity extends AppCompatActivity {
     
                 transaction.addToBackStack(null);
                 
+                transaction.commit();
+            }
+        });
+    
+        button_contacts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment newFragment = new Fragment(R.layout.fragment_contacts); // Create an instance of the new fragment
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            
+                transaction.replace(R.id.fragment_container, newFragment);
+            
+                transaction.addToBackStack(null);
+            
+                transaction.commit();
+            }
+        });
+        button_add_contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment newFragment = new Fragment(R.layout.fragment_add_contact); // Create an instance of the new fragment
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            
+                transaction.replace(R.id.fragment_container, newFragment);
+            
+                transaction.addToBackStack(null);
+            
                 transaction.commit();
             }
         });
