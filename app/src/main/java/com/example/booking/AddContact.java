@@ -30,7 +30,7 @@ public class AddContact extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_add_contact,container,false);
-        dbHandler = new DBHandler((MainActivity) getActivity());
+        dbHandler = new DBHandler(getActivity());
         db = dbHandler.getWritableDatabase();
     
         initButtons(v);
@@ -40,34 +40,19 @@ public class AddContact extends Fragment {
     }
     
     private void initButtons(View v) {
-        button_add_contact = (Button) v.findViewById(R.id.button_add_contact);
-        button_update_contact = (Button) v.findViewById(R.id.button_update_contact);
-        button_delete_contact = (Button) v.findViewById(R.id.button_delete_contact);
+        button_add_contact = v.findViewById(R.id.button_add_contact);
+        button_update_contact = v.findViewById(R.id.button_update_contact);
+        button_delete_contact = v.findViewById(R.id.button_delete_contact);
     
-        button_add_contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addContact();
-            }
-        });
-        button_update_contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updateContact();
-            }
-        });
-        button_delete_contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteContact();
-            }
-        });
+        button_add_contact.setOnClickListener(v13 -> addContact());
+        button_update_contact.setOnClickListener(v12 -> updateContact());
+        button_delete_contact.setOnClickListener(v1 -> deleteContact());
     }
     
     private void initTextFields(View v) {
-        this.name = (EditText) v.findViewById(R.id.input_name);
-        this.phone = (EditText) v.findViewById(R.id.input_phone);
-        this.id = (EditText) v.findViewById(R.id.input_id);
+        this.name = v.findViewById(R.id.input_name);
+        this.phone = v.findViewById(R.id.input_phone);
+        this.id = v.findViewById(R.id.input_id);
     }
     
     private void addContact() {
