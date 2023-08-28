@@ -3,101 +3,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <TextView
+        android:id="@+id/lbl_date"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:text="Skriv inn dato: " />
+    <EditText
+        android:layout_below="@+id/lbl_date"
+        android:id="@+id/input_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_below="@+id/input_date"
+        android:id="@+id/lbl_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Skriv inn sted" />
+    <EditText
+        android:layout_below="@+id/lbl_place"
+        android:id="@+id/input_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/lbl_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Skriv inn dato: " />
-        <EditText
-            android:layout_below="@+id/lbl_date"
-            android:id="@+id/input_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_below="@+id/input_date"
-            android:id="@+id/lbl_place"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Skriv inn sted" />
-        <EditText
-            android:layout_below="@+id/lbl_place"
-            android:id="@+id/input_place"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <TextView
+        android:layout_below="@+id/input_place"
+        android:id="@+id/lbl_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Skriv inn tid:" />
+    <EditText
+        android:layout_below="@+id/lbl_time"
+        android:id="@+id/input_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-        <TextView
-            android:layout_below="@+id/input_place"
-            android:id="@+id/lbl_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Skriv inn tid:" />
-        <EditText
-            android:layout_below="@+id/lbl_time"
-            android:id="@+id/input_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/lbl_message"
+        android:layout_below="@+id/input_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Skriv inn melding" />
+    <EditText
+        android:layout_below="@+id/lbl_message"
+        android:id="@+id/input_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/lbl_message"
-            android:layout_below="@+id/input_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Skriv inn melding" />
-        <EditText
-            android:layout_below="@+id/lbl_message"
-            android:id="@+id/input_message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/lbl_id"
+        android:layout_below="@+id/input_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Skriv inn  id" />
+    <EditText
+        android:layout_below="@+id/lbl_id"
+        android:id="@+id/input_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
-        <TextView
-            android:id="@+id/lbl_id"
-            android:layout_below="@+id/input_message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Skriv inn  id" />
-        <EditText
-            android:layout_below="@+id/lbl_id"
-            android:id="@+id/input_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:id="@+id/lbl_member"
-            android:layout_below="@+id/input_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Skriv inn deltaker" />
-        <EditText
-            android:layout_below="@+id/lbl_member"
-            android:id="@+id/input_member"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/button_add_appointment"
-            android:layout_below="@+id/input_member"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="addAppointment"
-            android:text="Legg til"/>
-        <Button
-            android:layout_below="@+id/button_add_appointment"
-            android:id="@+id/button_delete_appointment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="deleteAppointment"
-            android:text="Slett" />
-        <Button
-            android:layout_below="@+id/button_delete_appointment"
-            android:id="@+id/button_update_appointment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="deleteAppointment"
-            android:text="Oppdater" />
-    </RelativeLayout>
-
+    <TextView
+        android:id="@+id/lbl_member"
+        android:layout_below="@+id/input_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Skriv inn deltaker" />
+    <EditText
+        android:layout_below="@+id/lbl_member"
+        android:id="@+id/input_member"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/button_add_appointment"
+        android:layout_below="@+id/input_member"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="addAppointment"
+        android:text="Legg til"/>
+    <Button
+        android:layout_below="@+id/button_add_appointment"
+        android:id="@+id/button_delete_appointment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="deleteAppointment"
+        android:text="Slett" />
+    <Button
+        android:layout_below="@+id/button_delete_appointment"
+        android:id="@+id/button_update_appointment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="deleteAppointment"
+        android:text="Oppdater" />
 </RelativeLayout>
