@@ -30,7 +30,7 @@ public class AddAppointment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_add_appointment, container, false);
-        dbHandler = new DBHandler((MainActivity) getActivity());
+        dbHandler = new DBHandler(getActivity());
         db = dbHandler.getWritableDatabase();
         
         initButtons(v);
@@ -40,28 +40,13 @@ public class AddAppointment extends Fragment {
     }
     
     private void initButtons(View v) {
-        button_add_appointment = (Button) v.findViewById(R.id.button_add_appointment);
-        button_update_appointment = (Button) v.findViewById(R.id.button_update_appointment);
-        button_delete_appointment = (Button) v.findViewById(R.id.button_delete_appointment);
+        button_add_appointment = v.findViewById(R.id.button_add_appointment);
+        button_update_appointment = v.findViewById(R.id.button_update_appointment);
+        button_delete_appointment = v.findViewById(R.id.button_delete_appointment);
     
-        button_add_appointment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addAppointment();
-            }
-        });
-        button_update_appointment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updateAppointment();
-            }
-        });
-        button_delete_appointment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                deleteAppointment();
-            }
-        });
+        button_add_appointment.setOnClickListener(v13 -> addAppointment());
+        button_update_appointment.setOnClickListener(v12 -> updateAppointment());
+        button_delete_appointment.setOnClickListener(v1 -> deleteAppointment());
     }
     
     private void addAppointment() {
@@ -90,12 +75,12 @@ public class AddAppointment extends Fragment {
         dbHandler.deleteAppointment(db, _ID);
     }
     private void initTextFields(View v) {
-        this.date = (EditText) v.findViewById(R.id.input_date);
-        this.place = (EditText) v.findViewById(R.id.input_place);
-        this.message = (EditText) v.findViewById(R.id.input_message);
-        this.time = (EditText) v.findViewById(R.id.input_time);
-        this.id = (EditText) v.findViewById(R.id.input_id);
-        this.member = (EditText) v.findViewById(R.id.input_member);
+        this.date = v.findViewById(R.id.input_date);
+        this.place = v.findViewById(R.id.input_place);
+        this.message = v.findViewById(R.id.input_message);
+        this.time = v.findViewById(R.id.input_time);
+        this.id = v.findViewById(R.id.input_id);
+        this.member = v.findViewById(R.id.input_member);
     }
     @Override
     public void onDetach() {
