@@ -52,7 +52,7 @@ public class DBHandler extends SQLiteOpenHelper {
         db.insert(TABLE_CONTACTS, null, values);
     }
     
-    public void addAppointments(SQLiteDatabase db, Appointment appointment) {
+    public void addAppointment(SQLiteDatabase db, Appointment appointment) {
         ContentValues values = new ContentValues();
         values.put(KEY_PLACE, appointment.getPlace());
         values.put(KEY_MESSAGE, appointment.getMessage());
