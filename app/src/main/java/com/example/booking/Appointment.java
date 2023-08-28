@@ -1,4 +1,7 @@
 package com.example.booking;
+
+import androidx.annotation.NonNull;
+
 public class Appointment {
     long _ID;
     String date;
@@ -74,6 +77,7 @@ public class Appointment {
         this.time = time;
     }
     
+    @NonNull
     @Override
     public String toString() {
         return
