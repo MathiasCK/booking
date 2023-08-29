@@ -46,20 +46,26 @@ public class DBHandler extends SQLiteOpenHelper {
     }
     
     public void addContact(SQLiteDatabase db, Contact contact) {
+        Utils.validateContactFields(db, contact);
+        
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, contact.getName());
         values.put(KEY_PHONE, contact.getPhone());
-        db.insert(TABLE_CONTACTS, null, values);
+    
+        Utils.dbInsert(db, values, TABLE_CONTACTS);
     }
     
     public void addAppointment(SQLiteDatabase db, Appointment appointment) {
+        Utils.validateAppointmentFields(db, appointment);
+        
         ContentValues values = new ContentValues();
         values.put(KEY_PLACE, appointment.getPlace());
         values.put(KEY_MESSAGE, appointment.getMessage());
         values.put(KEY_DATE, appointment.getDate());
         values.put(KEY_TIME, appointment.getTime());
         values.put(KEY_MEMBER, appointment.getMember());
-        db.insert(TABLE_APPOINTMENTS, null, values);
+        
+        Utils.dbInsert(db, values, TABLE_APPOINTMENTS);
     }
     
     public List<Contact> listContacts(SQLiteDatabase db) {
