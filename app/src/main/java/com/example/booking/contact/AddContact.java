@@ -1,6 +1,8 @@
 package com.example.booking.contact;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,7 +65,7 @@ public class AddContact extends Fragment {
         Contact contact = new Contact(name, phone);
         Utils.validateContactFields(contact);
         
-        contactDao.insert(contact);
+        new AddContactAsyncTask().execute(contact);
     }
     
     private void updateContact() {
@@ -73,14 +75,41 @@ public class AddContact extends Fragment {
         
         Contact contact = new Contact(_ID, name, phone);
         Utils.validateContactFields(contact);
-        
-        contactDao.update(contact);
+    
+        new UpdateContactAsyncTask().execute(contact);
     }
     
     private void deleteContact() {
         long id = Long.parseLong(this.id.getText().toString());
         Contact contact = new Contact();
         contact.set_ID(id);
-        contactDao.delete(contact);
+        
+        new DeleteContactAsyncTask().execute(id);
+    }
+    
+    private class AddContactAsyncTask extends AsyncTask<Contact, Void, Void> {
+        @Override
+        protected Void doInBackground(Contact... contacts) {
+            contactDao.insert(contacts[0]);
+            return null;
+        }
+    }
+    
+    private class UpdateContactAsyncTask extends AsyncTask<Contact, Void, Void> {
+        @Override
+        protected Void doInBackground(Contact... contacts) {
+            contactDao.update(contacts[0]);
+            return null;
+        }
+    }
+    
+    private class DeleteContactAsyncTask extends AsyncTask<Long, Void, Void> {
+        @Override
+        protected Void doInBackground(Long... ids) {
+            Contact contact = new Contact();
+            contact.set_ID(ids[0]);
+            contactDao.delete(contact);
+            return null;
+        }
     }
 }
