@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -66,6 +67,8 @@ public class AddContact extends Fragment {
         Utils.validateContactFields(contact);
         
         new AddContactAsyncTask().execute(contact);
+        
+        clearContactFields();
     }
     
     private void updateContact() {
@@ -77,6 +80,8 @@ public class AddContact extends Fragment {
         Utils.validateContactFields(contact);
     
         new UpdateContactAsyncTask().execute(contact);
+    
+        clearContactFields();
     }
     
     private void deleteContact() {
@@ -85,6 +90,8 @@ public class AddContact extends Fragment {
         contact.set_ID(id);
         
         new DeleteContactAsyncTask().execute(id);
+    
+        clearContactFields();
     }
     
     private class AddContactAsyncTask extends AsyncTask<Contact, Void, Void> {
@@ -111,5 +118,15 @@ public class AddContact extends Fragment {
             contactDao.delete(contact);
             return null;
         }
+    }
+    
+    private void clearContactFields() {
+        TextView name = v.findViewById(R.id.input_name);
+        TextView phone = v.findViewById(R.id.input_phone);
+        TextView id = v.findViewById(R.id.input_id);
+        
+        name.setText("");
+        phone.setText("");
+        id.setText("");
     }
 }

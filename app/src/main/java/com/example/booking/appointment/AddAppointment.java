@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -76,6 +77,8 @@ public class AddAppointment extends Fragment {
         Utils.validateAppointmentFields(appointment);
     
         new AddAppointmentAsync().execute(appointment);
+    
+        clearAppointmentFields();
     }
     
     private void updateAppointment() {
@@ -90,6 +93,8 @@ public class AddAppointment extends Fragment {
         Utils.validateAppointmentFields(appointment);
     
         new UpdateAppointmentAsyncTask().execute(appointment);
+    
+        clearAppointmentFields();
     }
     
     private void deleteAppointment() {
@@ -98,6 +103,8 @@ public class AddAppointment extends Fragment {
         appointment.set_ID(id);
     
         new DeleteAppointmentAsyncTask().execute(id);
+    
+        clearAppointmentFields();
     }
     
     private class AddAppointmentAsync extends AsyncTask<Appointment, Void, Void> {
@@ -124,5 +131,21 @@ public class AddAppointment extends Fragment {
             appointmentDao.delete(appointment);
             return null;
         }
+    }
+    
+    private void clearAppointmentFields() {
+        TextView date = v.findViewById(R.id.input_date);
+        TextView place = v.findViewById(R.id.input_place);
+        TextView message = v.findViewById(R.id.input_message);
+        TextView time = v.findViewById(R.id.input_time);
+        TextView id = v.findViewById(R.id.input_id);
+        TextView member = v.findViewById(R.id.input_member);
+        
+        date.setText("");
+        place.setText("");
+        message.setText("");
+        time.setText("");
+        id.setText("");
+        member.setText("");
     }
 }
