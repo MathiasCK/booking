@@ -14,8 +14,6 @@ import androidx.room.Room;
 
 import com.example.booking.DB;
 import com.example.booking.R;
-import com.example.booking.appointment.AppointmentDao;
-import com.example.booking.contact.Contact;
 
 import java.util.List;
 
@@ -33,9 +31,9 @@ public class Appointments extends Fragment {
     
         ListView showContacts = v.findViewById(R.id.contacts);
     
-        List<Contact> contacts = appointmentDao.getAllContacts();
+        List<Appointment> appointments = appointmentDao.getAllAppointments();
     
-        ArrayAdapter<Contact> arrayAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, contacts);
+        ArrayAdapter<Appointment> arrayAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, appointments);
     
         showContacts.setAdapter(arrayAdapter);
     

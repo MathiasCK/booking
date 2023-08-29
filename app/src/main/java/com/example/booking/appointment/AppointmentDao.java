@@ -6,9 +6,6 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.booking.appointment.Appointment;
-import com.example.booking.contact.Contact;
-
 import java.util.List;
 
 @Dao
@@ -23,5 +20,5 @@ public interface AppointmentDao {
     void delete(Appointment appointment);
     
     @Query("SELECT * FROM contacts")
-    List<Contact> getAllContacts();
+    List<Appointment> getAllAppointments();
 }
