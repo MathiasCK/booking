@@ -22,6 +22,18 @@
         app:layout_constraintRight_toRightOf="parent">
 
         <Button
+            android:id="@+id/button_contacts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kontakter" />
+
+        <Button
+            android:id="@+id/button_add_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+ Kontakt" />
+
+        <Button
             android:id="@+id/button_appointments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,18 +47,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+ Avtale" />
-
-        <Button
-            android:id="@+id/button_contacts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kontakter" />
-
-        <Button
-            android:id="@+id/button_add_contact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+ Kontakt" />
 
     </LinearLayout>
 
