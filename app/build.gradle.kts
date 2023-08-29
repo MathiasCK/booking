@@ -51,6 +51,8 @@ android {
 
 dependencies {
 
+    implementation("androidx.room:room-runtime:2.4.0")
+    annotationProcessor("androidx.room:room-compiler:2.4.0")
     implementation("com.google.android.material:material:1.7.0")
     implementation("androidx.appcompat:appcompat:1.5.1")
     implementation("androidx.fragment:fragment:1.3.6")
