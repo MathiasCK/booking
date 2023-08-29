@@ -1,5 +1,6 @@
 package com.example.booking.appointment;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import androidx.room.Room;
 import com.example.booking.DB;
 import com.example.booking.R;
 import com.example.booking.Utils;
+import com.example.booking.contact.AddContact;
+import com.example.booking.contact.Contact;
 
 public class AddAppointment extends Fragment {
     
@@ -71,8 +74,8 @@ public class AddAppointment extends Fragment {
         
         Appointment appointment = new Appointment(place, message, date, time, member);
         Utils.validateAppointmentFields(appointment);
-        
-        appointmentDao.insert(appointment);
+    
+        new AddAppointmentAsync().execute(appointment);
     }
     
     private void updateAppointment() {
@@ -85,14 +88,41 @@ public class AddAppointment extends Fragment {
         
         Appointment appointment = new Appointment(_ID, place, message, date, time, member);
         Utils.validateAppointmentFields(appointment);
-        
-        appointmentDao.update(appointment);
+    
+        new UpdateAppointmentAsyncTask().execute(appointment);
     }
     
     private void deleteAppointment() {
-        long _ID = Long.parseLong(this.id.getText().toString());
+        long id = Long.parseLong(this.id.getText().toString());
         Appointment appointment = new Appointment();
-        appointment.set_ID(_ID);
-        appointmentDao.delete(appointment);
+        appointment.set_ID(id);
+    
+        new DeleteAppointmentAsyncTask().execute(id);
+    }
+    
+    private class AddAppointmentAsync extends AsyncTask<Appointment, Void, Void> {
+        @Override
+        protected Void doInBackground(Appointment... appointments) {
+            appointmentDao.insert(appointments[0]);
+            return null;
+        }
+    }
+    
+    private class UpdateAppointmentAsyncTask extends AsyncTask<Appointment, Void, Void> {
+        @Override
+        protected Void doInBackground(Appointment... appointments) {
+            appointmentDao.update(appointments[0]);
+            return null;
+        }
+    }
+    
+    private class DeleteAppointmentAsyncTask extends AsyncTask<Long, Void, Void> {
+        @Override
+        protected Void doInBackground(Long... ids) {
+            Appointment appointment = new Appointment();
+            appointment.set_ID(ids[0]);
+            appointmentDao.delete(appointment);
+            return null;
+        }
     }
 }

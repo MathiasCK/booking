@@ -19,6 +19,6 @@ public interface AppointmentDao {
     @Delete
     void delete(Appointment appointment);
     
-    @Query("SELECT * FROM contacts")
+    @Query("SELECT * FROM appointments")
     List<Appointment> getAllAppointments();
 }
