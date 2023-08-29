@@ -1,6 +1,5 @@
 package com.example.booking;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,31 +10,30 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Appointments extends Fragment {
     
-    DBHandler dbHelper;
-    SQLiteDatabase db;
+    AppointmentDao appointmentDao;
     
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v =  inflater.inflate(R.layout.fragment_appointments,container,false);
-        
-        dbHelper = new DBHandler(getActivity());
-        
-        db = dbHelper.getWritableDatabase();
-        
-        ListView showAppointments = v.findViewById(R.id.appointments);
-        
-        ArrayList<Appointment> appointments = (ArrayList<Appointment>) dbHelper.listAppointments(db);
-        
-        ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, appointments);
+        View v = inflater.inflate(R.layout.fragment_contacts, container, false);
     
-        showAppointments.setAdapter(arrayAdapter);
-        
+        DB db = Room.databaseBuilder(requireContext(), DB.class, "bookings").build();
+        appointmentDao = db.appointmentDao();
+    
+        ListView showContacts = v.findViewById(R.id.contacts);
+    
+        List<Contact> contacts = appointmentDao.getAllContacts();
+    
+        ArrayAdapter<Contact> arrayAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, contacts);
+    
+        showContacts.setAdapter(arrayAdapter);
+    
         return v;
     }
 }

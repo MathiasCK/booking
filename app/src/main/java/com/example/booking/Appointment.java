@@ -1,13 +1,23 @@
 package com.example.booking;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "appointments")
 public class Appointment {
+    @PrimaryKey(autoGenerate = true)
     long _ID;
+    @ColumnInfo(name = "date")
     String date;
+    @ColumnInfo(name = "place")
     String place;
+    @ColumnInfo(name = "message")
     String message;
+    @ColumnInfo(name = "time")
     String time;
+    @ColumnInfo(name = "member")
     String member;
     
     public Appointment() {}

@@ -1,11 +1,17 @@
 package com.example.booking;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity(tableName = "contacts")
 public class Contact {
-    
+    @PrimaryKey(autoGenerate = true)
     long _ID;
+    @ColumnInfo(name = "name")
     String name;
+    @ColumnInfo(name = "phone")
     String phone;
     
     public Contact(String name, String phone) {

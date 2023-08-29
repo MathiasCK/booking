@@ -1,39 +1,35 @@
 package com.example.booking;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
 
 public class AddContact extends Fragment {
     
     EditText name;
     EditText phone;
     EditText id;
-    TextView text;
     Button button_add_contact;
     Button button_update_contact;
     Button button_delete_contact;
     View v;
-    
-    DBHandler dbHandler;
-    SQLiteDatabase db;
+    ContactDao contactDao;
     
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_add_contact,container,false);
-        dbHandler = new DBHandler(getActivity());
-        db = dbHandler.getWritableDatabase();
-    
+        v = inflater.inflate(R.layout.fragment_add_contact, container, false);
+        DB db = Room.databaseBuilder(requireContext(), DB.class, "bookings").build();
+        contactDao = db.contactDao();
+        
         initButtons();
         initTextFields();
         
@@ -59,20 +55,28 @@ public class AddContact extends Fragment {
     private void addContact() {
         String name = this.name.getText().toString();
         String phone = this.phone.getText().toString();
+        
         Contact contact = new Contact(name, phone);
-        dbHandler.addContact(db, contact);
+        Utils.validateContactFields(contact);
+        
+        contactDao.insert(contact);
     }
     
     private void updateContact() {
         String name = this.name.getText().toString();
         String phone = this.phone.getText().toString();
         long _ID = Long.parseLong(this.id.getText().toString());
+        
         Contact contact = new Contact(_ID, name, phone);
-        dbHandler.updateContact(db, contact);
+        Utils.validateContactFields(contact);
+        
+        contactDao.update(contact);
     }
     
     private void deleteContact() {
-        long id = (Long.parseLong(this.id.getText().toString()));
-        dbHandler.deleteContact(db, id);
+        long id = Long.parseLong(this.id.getText().toString());
+        Contact contact = new Contact();
+        contact.set_ID(id);
+        contactDao.delete(contact);
     }
 }
