@@ -37,7 +37,8 @@ public class AlarmReceiver extends BroadcastReceiver {
             long timeDifferenceMillis = appointmentTimeMillis - currentTimeMillis;
             
             if (timeDifferenceMillis <= 24 * 60 * 60 * 1000 && timeDifferenceMillis > 0) {
-                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION) == PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.checkSelfPermission(context, ".DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+                ) == PackageManager.PERMISSION_GRANTED) {
                     
                         for (Contact contact : contacts) {
                             if (appointment.getMember().equals(contact.getName())) {

@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Create an intent to the AlarmReceiver
         Intent intent = new Intent(this, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
         
         // Set the interval for the alarm (e.g., every 24 hours)
         long intervalMillis = 24 * 60 * 60 * 1000; // 24 hours
