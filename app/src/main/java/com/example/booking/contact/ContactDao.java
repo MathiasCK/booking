@@ -1,4 +1,4 @@
-package com.example.booking;
+package com.example.booking.contact;
 
 import androidx.room.Dao;
 import androidx.room.Delete;

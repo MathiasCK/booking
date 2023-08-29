@@ -1,5 +1,8 @@
 package com.example.booking;
 
+import com.example.booking.appointment.Appointment;
+import com.example.booking.contact.Contact;
+
 public class Utils {
     public static void validateAppointmentFields(Appointment appointment) {
         if (appointment == null) {

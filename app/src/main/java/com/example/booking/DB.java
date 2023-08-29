@@ -6,7 +6,12 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {Contact.class, Appointment.class}, version = 1)
+import com.example.booking.appointment.Appointment;
+import com.example.booking.appointment.AppointmentDao;
+import com.example.booking.contact.Contact;
+import com.example.booking.contact.ContactDao;
+
+@Database(entities = { Contact.class, Appointment.class}, version = 1)
 public abstract class DB extends RoomDatabase {
     public abstract ContactDao contactDao();
     public abstract AppointmentDao appointmentDao();

@@ -1,4 +1,4 @@
-package com.example.booking;
+package com.example.booking.contact;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;

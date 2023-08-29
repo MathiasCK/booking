@@ -1,4 +1,4 @@
-package com.example.booking;
+package com.example.booking.appointment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.room.Room;
+
+import com.example.booking.DB;
+import com.example.booking.R;
+import com.example.booking.Utils;
 
 public class AddAppointment extends Fragment {
     
