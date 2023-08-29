@@ -15,8 +15,6 @@ import androidx.room.Room;
 
 import com.example.booking.DB;
 import com.example.booking.R;
-import com.example.booking.contact.Contact;
-import com.example.booking.contact.Contacts;
 
 import java.util.List;
 

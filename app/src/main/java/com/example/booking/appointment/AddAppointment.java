@@ -17,8 +17,6 @@ import androidx.room.Room;
 import com.example.booking.DB;
 import com.example.booking.R;
 import com.example.booking.Utils;
-import com.example.booking.contact.AddContact;
-import com.example.booking.contact.Contact;
 
 public class AddAppointment extends Fragment {
     

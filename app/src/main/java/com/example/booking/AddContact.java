@@ -18,7 +18,6 @@ public class AddContact extends Fragment {
     EditText name;
     EditText phone;
     EditText id;
-    TextView text;
     Button button_add_contact;
     Button button_update_contact;
     Button button_delete_contact;
