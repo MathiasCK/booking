@@ -61,12 +61,12 @@ public class AppointmentAdapter extends ArrayAdapter<Appointment> {
                 new DeleteContactAsyncTask().execute(appointment.get_ID());
                 remove(appointment);
             });
-            
-            //button_update_contact.setOnClickListener(v -> {
-            //    ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction()
-            //            .replace(R.id.fragment_container, new UpdateContact(contact))
-            //            .commit();
-            //});
+    
+            button_update_appointment.setOnClickListener(v -> {
+                ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new UpdateAppointment(appointment))
+                        .commit();
+            });
         }
         
         return convertView;

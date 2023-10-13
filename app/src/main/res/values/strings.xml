@@ -30,7 +30,7 @@
     <string name="appointment_update">Oppdater</string>
     <string name="hint_appointment_date">Dato...</string>
     <string name="hint_appointment_place">Sted...</string>
-    <string name="hint_appointment_time">Tidaspunkt...</string>
+    <string name="hint_appointment_time">Tidspunkt...</string>
     <string name="hint_appointment_message">Melding...</string>
     <string name="hint_appointment_id">Id...</string>
     <string name="hint_appointment_member">Deltaker...</string>

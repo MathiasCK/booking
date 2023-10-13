@@ -49,7 +49,7 @@ public class UpdateContact extends Fragment {
         this.contactName = v.findViewById(R.id.input_name);
         this.contactName.setText(this.contact.name);
         
-        this.contactPhone =  v.findViewById(R.id.input_phone);
+        this.contactPhone = v.findViewById(R.id.input_phone);
         this.contactPhone.setText(this.contact.phone);
     }
     

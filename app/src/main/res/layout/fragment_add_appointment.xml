@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -84,7 +83,8 @@
         android:layout_below="@+id/input_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/appointment_id" />
+        android:text="@string/appointment_id"
+        android:visibility="gone"/>
 
     <EditText
         android:layout_below="@+id/lbl_id"
@@ -94,7 +94,8 @@
         android:autofillHints=""
         android:inputType="number"
         tools:ignore="LabelFor"
-        android:hint="@string/hint_appointment_id"/>
+        android:hint="@string/hint_appointment_id"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/lbl_member"
@@ -113,24 +114,16 @@
         tools:ignore="LabelFor"
         android:hint="@string/hint_appointment_member"
         />
+
     <Button
         android:id="@+id/button_add_appointment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/input_member"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/appointment_add"/>
-    <Button
-        android:layout_below="@+id/button_add_appointment"
-        android:id="@+id/button_delete_appointment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/appointment_delete" />
-    <Button
-        android:layout_below="@+id/button_delete_appointment"
-        android:id="@+id/button_update_appointment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/appointment_update" />
+        android:background="@color/green"
+        android:text="@string/appointment_add"
+        android:textColor="@color/white" />
+
 </RelativeLayout>
 
 </ScrollView>

@@ -18,7 +18,7 @@ import com.example.booking.DB;
 import com.example.booking.R;
 import com.example.booking.Utils;
 
-public class AddAppointment extends Fragment {
+public class UpdateAppointment extends Fragment {
     
     EditText date;
     EditText place;
@@ -26,53 +26,58 @@ public class AddAppointment extends Fragment {
     EditText time;
     EditText id;
     EditText member;
-    View v;
     AppointmentDao appointmentDao;
+    View v;
+    Appointment appointment;
+    public UpdateAppointment(Appointment appointment) {
+        this.appointment = appointment;
+    }
     
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_add_appointment, container, false);
+        v = inflater.inflate(R.layout.fragment_update_appointment, container, false);
         DB db = Room.databaseBuilder(requireContext(), DB.class, "bookings").build();
         appointmentDao = db.appointmentDao();
-    
-        v.findViewById(R.id.button_add_appointment).setOnClickListener(v13 -> addAppointment());
         
-        initTextFields();
-    
+        initControls();
+        
         return v;
     }
     
-    private void initTextFields() {
+    private void initControls() {
+        Button button_update_appointment = v.findViewById(R.id.button_update_appointment);
+        button_update_appointment.setOnClickListener(v12 -> updateAppointment());
+        
         this.date = v.findViewById(R.id.input_date);
+        this.date.setText(appointment.getDate());
+        
         this.place = v.findViewById(R.id.input_place);
+        this.place.setText(appointment.getPlace());
+        
         this.message = v.findViewById(R.id.input_message);
+        this.message.setText(appointment.getMessage());
+        
         this.time = v.findViewById(R.id.input_time);
-        this.id = v.findViewById(R.id.input_id);
+        this.time.setText(appointment.getTime());
+        
         this.member = v.findViewById(R.id.input_member);
+        this.member.setText(appointment.getMember());
     }
     
-    private void addAppointment() {
+    private void updateAppointment() {
         String date = this.date.getText().toString();
         String place = this.place.getText().toString();
         String message = this.message.getText().toString();
         String time = this.time.getText().toString();
         String member = this.member.getText().toString();
         
-        Appointment appointment = new Appointment(place, message, date, time, member);
+        Appointment appointment = new Appointment(this.appointment.get_ID(), place, message, date, time, member);
         Utils.validateAppointmentFields(appointment);
-    
-        new AddAppointmentAsync().execute(appointment);
-    
+        
+        new UpdateAppointmentAsyncTask().execute(appointment);
+        
         clearAppointmentFields();
-    }
-    
-    private class AddAppointmentAsync extends AsyncTask<Appointment, Void, Void> {
-        @Override
-        protected Void doInBackground(Appointment... appointments) {
-            appointmentDao.insert(appointments[0]);
-            return null;
-        }
     }
     
     private class UpdateAppointmentAsyncTask extends AsyncTask<Appointment, Void, Void> {
@@ -82,7 +87,6 @@ public class AddAppointment extends Fragment {
             return null;
         }
     }
-    
     
     private void clearAppointmentFields() {
         TextView date = v.findViewById(R.id.input_date);
