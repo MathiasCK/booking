@@ -47,7 +47,9 @@
             android:layout_below="@+id/input_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/add_contact_lbl_id" />
+            android:text="@string/add_contact_lbl_id"
+            android:visibility="gone"
+        />
 
         <EditText
             android:layout_below="@+id/lbl_id"
@@ -56,7 +58,10 @@
             android:layout_height="wrap_content"
             android:hint="@string/add_contact_input_id"
             android:inputType="number"
-            android:autofillHints=""/>
+            android:autofillHints=""
+            android:visibility="gone"
+        />
+
 
 
         <Button

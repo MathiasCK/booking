@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.booking.contact.Contact;
+
 public class AddContact extends Fragment {
     
     EditText name;

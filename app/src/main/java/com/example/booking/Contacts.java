@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.booking.contact.Contact;
+
 import java.util.ArrayList;
 
 public class Contacts extends Fragment {
