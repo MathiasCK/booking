@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:text="@string/add_contact_lbl_id"
             android:visibility="gone"
-            />
+        />
 
         <EditText
             android:layout_below="@+id/lbl_id"
@@ -60,7 +60,7 @@
             android:inputType="number"
             android:autofillHints=""
             android:visibility="gone"
-            />
+        />
 
         <Button
             android:id="@+id/button_add_contact"
