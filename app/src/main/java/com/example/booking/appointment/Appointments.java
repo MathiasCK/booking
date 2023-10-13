@@ -15,6 +15,8 @@ import androidx.room.Room;
 
 import com.example.booking.DB;
 import com.example.booking.R;
+import com.example.booking.contact.Contact;
+import com.example.booking.contact.ContactAdapter;
 
 import java.util.List;
 
@@ -47,8 +49,8 @@ public class Appointments extends Fragment {
         
         @Override
         protected void onPostExecute(List<Appointment> appointments) {
-            ArrayAdapter<Appointment> arrayAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, appointments);
-            showAppointments.setAdapter(arrayAdapter);
+            AppointmentAdapter customAdapter = new AppointmentAdapter(requireContext(), R.layout.appointment_row, appointments, appointmentDao);
+            showAppointments.setAdapter(customAdapter);
         }
     }
 }
