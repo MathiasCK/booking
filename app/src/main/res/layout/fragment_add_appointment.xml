@@ -1,126 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <TextView
-        android:id="@+id/lbl_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/appointment_date" />
+        android:text="@string/add_appointment"
+        android:padding="16dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000000" />
 
-    <EditText
-        android:layout_below="@+id/lbl_date"
-        android:id="@+id/input_date"
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:inputType="date"
-        tools:ignore="LabelFor"
-        android:hint="@string/hint_appointment_date"/>
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_below="@+id/input_date"
-        android:id="@+id/lbl_place"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/appointment_place" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:layout_below="@+id/lbl_place"
-        android:id="@+id/input_place"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:inputType="text"
-        tools:ignore="LabelFor"
-        android:hint="@string/hint_appointment_place"/>
+        <TextView
+            android:id="@+id/lbl_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/appointment_date" />
 
-    <TextView
-        android:layout_below="@+id/input_place"
-        android:id="@+id/lbl_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/appointment_time" />
+        <EditText
+            android:layout_below="@+id/lbl_date"
+            android:id="@+id/input_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:inputType="date"
+            tools:ignore="LabelFor"
+            android:hint="@string/hint_appointment_date"/>
 
-    <EditText
-        android:layout_below="@+id/lbl_time"
-        android:id="@+id/input_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:inputType="time"
-        tools:ignore="LabelFor"
-        android:hint="@string/hint_appointment_time"
-        />
+        <TextView
+            android:layout_below="@+id/input_date"
+            android:id="@+id/lbl_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/appointment_place" />
 
-    <TextView
-        android:id="@+id/lbl_message"
-        android:layout_below="@+id/input_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/appointment_message" />
+        <EditText
+            android:layout_below="@+id/lbl_place"
+            android:id="@+id/input_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:inputType="text"
+            tools:ignore="LabelFor"
+            android:hint="@string/hint_appointment_place"/>
 
-    <EditText
-        android:layout_below="@+id/lbl_message"
-        android:id="@+id/input_message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:inputType="text"
-        tools:ignore="LabelFor"
-        android:hint="@string/hint_appointment_message"
-        />
+        <TextView
+            android:layout_below="@+id/input_place"
+            android:id="@+id/lbl_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/appointment_time" />
 
-    <TextView
-        android:id="@+id/lbl_id"
-        android:layout_below="@+id/input_message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/appointment_id"
-        android:visibility="gone"/>
+        <EditText
+            android:layout_below="@+id/lbl_time"
+            android:id="@+id/input_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:inputType="time"
+            tools:ignore="LabelFor"
+            android:hint="@string/hint_appointment_time"
+            />
 
-    <EditText
-        android:layout_below="@+id/lbl_id"
-        android:id="@+id/input_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:inputType="number"
-        tools:ignore="LabelFor"
-        android:hint="@string/hint_appointment_id"
-        android:visibility="gone"/>
+        <TextView
+            android:id="@+id/lbl_message"
+            android:layout_below="@+id/input_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/appointment_message" />
 
-    <TextView
-        android:id="@+id/lbl_member"
-        android:layout_below="@+id/input_id"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/appointment_member" />
+        <EditText
+            android:layout_below="@+id/lbl_message"
+            android:id="@+id/input_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:inputType="text"
+            tools:ignore="LabelFor"
+            android:hint="@string/hint_appointment_message"
+            />
 
-    <Spinner
-        android:layout_below="@+id/lbl_member"
-        android:id="@+id/input_member"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_appointment_member"
-        />
+        <TextView
+            android:id="@+id/lbl_id"
+            android:layout_below="@+id/input_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/appointment_id"
+            android:visibility="gone"/>
 
-    <Button
-        android:id="@+id/button_add_appointment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/input_member"
-        android:background="@color/green"
-        android:text="@string/appointment_add"
-        android:textColor="@color/white" />
+        <EditText
+            android:layout_below="@+id/lbl_id"
+            android:id="@+id/input_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints=""
+            android:inputType="number"
+            tools:ignore="LabelFor"
+            android:hint="@string/hint_appointment_id"
+            android:visibility="gone"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/lbl_member"
+            android:layout_below="@+id/input_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/appointment_member" />
+
+        <Spinner
+            android:layout_below="@+id/lbl_member"
+            android:id="@+id/input_member"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_appointment_member"
+            />
+
+        <Button
+            android:id="@+id/button_add_appointment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_member"
+            android:background="@color/green"
+            android:text="@string/appointment_add"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
 
 </ScrollView>
+</LinearLayout>

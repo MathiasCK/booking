@@ -1,75 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <RelativeLayout
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:text="@string/update_contact"
+        android:padding="16dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#000000" />
 
-        <TextView
-            android:id="@+id/lbl_name"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/add_contact_lbl_name" />
+            android:padding="16dp">
 
-        <EditText
-            android:id="@+id/input_name"
-            android:layout_below="@+id/lbl_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/add_contact_input_name"
-            android:inputType="text"
-            android:autofillHints="" />
+            <TextView
+                android:id="@+id/lbl_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_contact_lbl_name" />
 
-        <TextView
-            android:id="@+id/lbl_phone"
-            android:layout_below="@+id/input_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/add_contact_lbl_phone"
-            />
+            <EditText
+                android:id="@+id/input_name"
+                android:layout_below="@+id/lbl_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_contact_input_name"
+                android:inputType="text"
+                android:autofillHints="" />
 
-        <EditText
-            android:id="@+id/input_phone"
-            android:layout_below="@+id/lbl_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/add_contact_input_phone"
-            android:inputType="number"
-            android:autofillHints=""
-            tools:ignore="TextFields" />
+            <TextView
+                android:id="@+id/lbl_phone"
+                android:layout_below="@+id/input_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_contact_lbl_phone"
+                />
 
-        <TextView
-            android:id="@+id/lbl_id"
-            android:layout_below="@+id/input_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/add_contact_lbl_id"
-            android:visibility="gone"
-            />
+            <EditText
+                android:id="@+id/input_phone"
+                android:layout_below="@+id/lbl_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_contact_input_phone"
+                android:inputType="number"
+                android:autofillHints=""
+                tools:ignore="TextFields" />
 
-        <EditText
-            android:layout_below="@+id/lbl_id"
-            android:id="@+id/input_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/add_contact_input_id"
-            android:inputType="number"
-            android:autofillHints=""
-            android:visibility="gone"
-            />
+            <TextView
+                android:id="@+id/lbl_id"
+                android:layout_below="@+id/input_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/add_contact_lbl_id"
+                android:visibility="gone"
+                />
 
-        <Button
-            android:id="@+id/button_update_contact"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/input_phone"
-            android:background="@color/orange"
-            android:text="@string/btn_update_contact"
-            android:textColor="@color/white" />
+            <EditText
+                android:layout_below="@+id/lbl_id"
+                android:id="@+id/input_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_contact_input_id"
+                android:inputType="number"
+                android:autofillHints=""
+                android:visibility="gone"
+                />
 
-    </RelativeLayout>
-</ScrollView>
+            <Button
+                android:id="@+id/button_update_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/input_phone"
+                android:background="@color/orange"
+                android:text="@string/btn_update_contact"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>
