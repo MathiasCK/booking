@@ -3,6 +3,7 @@ package com.example.booking.contact;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.booking.R;
 
@@ -39,7 +43,9 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
         TextView contact_id = convertView.findViewById(R.id.contact_id);
         TextView contact_name = convertView.findViewById(R.id.contact_name);
         TextView contact_phone = convertView.findViewById(R.id.contact_phone);
+        
         Button button_delete_contact = convertView.findViewById(R.id.button_delete_contact);
+        Button button_update_contact = convertView.findViewById(R.id.button_update_contact);
         
         Contact contact = getItem(position);
         if (contact != null) {
@@ -50,6 +56,12 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
             button_delete_contact.setOnClickListener(view -> {
                 new DeleteContactAsyncTask().execute(contact.get_ID());
                 remove(contact);
+            });
+    
+            button_update_contact.setOnClickListener(v -> {
+                ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new UpdateContact(contact))
+                        .commit();
             });
         }
         

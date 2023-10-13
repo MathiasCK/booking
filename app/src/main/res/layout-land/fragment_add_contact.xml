@@ -62,20 +62,12 @@
             android:visibility="gone"
             />
 
-
         <Button
             android:layout_below="@+id/input_id"
             android:id="@+id/button_add_contact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_add_contact" />
-
-        <Button
-            android:id="@+id/button_update_contact"
-            android:layout_below="@+id/button_add_contact"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_update_contact" />
 
     </RelativeLayout>
 </ScrollView>

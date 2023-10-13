@@ -18,50 +18,58 @@ import com.example.booking.DB;
 import com.example.booking.R;
 import com.example.booking.Utils;
 
-public class AddContact extends Fragment {
+public class UpdateContact extends Fragment {
     
-    EditText name;
-    EditText phone;
-    EditText id;
+    EditText contactName;
+    EditText contactPhone;
     View v;
     ContactDao contactDao;
+    Contact contact;
+    
+    public UpdateContact(Contact contact) {
+        this.contact = contact;
+    }
     
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.fragment_add_contact, container, false);
+        v = inflater.inflate(R.layout.fragment_update_contact, container, false);
         DB db = Room.databaseBuilder(requireContext(), DB.class, "bookings").build();
         contactDao = db.contactDao();
-    
-        v.findViewById(R.id.button_add_contact).setOnClickListener(v13 -> addContact());
         
-        initTextFields();
+        initControls();
         
         return v;
     }
     
-    private void initTextFields() {
-        this.name = v.findViewById(R.id.input_name);
-        this.phone = v.findViewById(R.id.input_phone);
-        this.id = v.findViewById(R.id.input_id);
+    private void initControls() {
+        Button button_update_contact = v.findViewById(R.id.button_update_contact);
+        button_update_contact.setOnClickListener(v12 -> updateContact());
+        
+        this.contactName = v.findViewById(R.id.input_name);
+        this.contactName.setText(this.contact.name);
+        
+        this.contactPhone =  v.findViewById(R.id.input_phone);
+        this.contactPhone.setText(this.contact.phone);
     }
     
-    private void addContact() {
-        String name = this.name.getText().toString();
-        String phone = this.phone.getText().toString();
+    private void updateContact() {
+        String name = this.contactName.getText().toString();
+        String phone = this.contactPhone.getText().toString();
+        long _ID = this.contact.get_ID();
         
-        Contact contact = new Contact(name, phone);
+        Contact contact = new Contact(_ID, name, phone);
         Utils.validateContactFields(contact);
         
-        new AddContactAsyncTask().execute(contact);
+        new UpdateContactAsyncTask().execute(contact);
         
         clearContactFields();
     }
     
-    private class AddContactAsyncTask extends AsyncTask<Contact, Void, Void> {
+    private class UpdateContactAsyncTask extends AsyncTask<Contact, Void, Void> {
         @Override
         protected Void doInBackground(Contact... contacts) {
-            contactDao.insert(contacts[0]);
+            contactDao.update(contacts[0]);
             return null;
         }
     }
