@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.booking.appointment.Appointment;
 import com.example.booking.contact.Contact;
 
 import java.util.ArrayList;
