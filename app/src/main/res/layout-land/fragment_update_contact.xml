@@ -64,10 +64,12 @@
 
         <Button
             android:id="@+id/button_update_contact"
-            android:layout_below="@+id/input_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_update_contact" />
+            android:layout_below="@+id/input_phone"
+            android:background="@color/orange"
+            android:text="@string/btn_update_contact"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 </ScrollView>

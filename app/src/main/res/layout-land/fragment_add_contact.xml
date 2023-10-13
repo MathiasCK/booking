@@ -63,11 +63,13 @@
             />
 
         <Button
-            android:layout_below="@+id/input_id"
             android:id="@+id/button_add_contact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_add_contact" />
+            android:layout_below="@+id/input_id"
+            android:background="@color/green"
+            android:text="@string/btn_add_contact"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 </ScrollView>
