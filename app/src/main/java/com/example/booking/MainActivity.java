@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     Appointments appointments = new Appointments();
     AddAppointment addAppointment = new AddAppointment();
     
+    Settings settings = new Settings();
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +39,13 @@ public class MainActivity extends AppCompatActivity {
         Button button_add_appointment = findViewById(R.id.button_add_appointment);
         Button button_contacts = findViewById(R.id.button_contacts);
         Button button_add_contact = findViewById(R.id.button_add_contact);
+        Button button_settings = findViewById(R.id.button_settings);
     
         button_appointments.setOnClickListener(view -> displayFragment(appointments));
         button_add_appointment.setOnClickListener(view -> displayFragment(addAppointment));
         button_contacts.setOnClickListener(view -> displayFragment(contacts));
         button_add_contact.setOnClickListener(view -> displayFragment(addContact));
+        button_settings.setOnClickListener(view -> displayFragment(settings));
     }
     private void displayFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
