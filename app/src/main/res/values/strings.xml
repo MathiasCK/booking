@@ -35,4 +35,8 @@
     <string name="hint_appointment_id">Id...</string>
     <string name="hint_appointment_member">Deltaker...</string>
     <string name="btn_dialog_close">Lukk</string>
+    <string name="contacts">Kontakter</string>
+    <string name="add_contact">Legg til kontakt</string>
+    <string name="appointments">Avtaler</string>
+    <string name="add_appointment">Legg til avtale</string>
 </resources>
