@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +17,11 @@ import androidx.room.Room;
 import com.example.booking.DB;
 import com.example.booking.R;
 import com.example.booking.Utils;
+import com.example.booking.contact.Contact;
+import com.example.booking.contact.ContactDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddAppointment extends Fragment {
     
@@ -25,9 +30,10 @@ public class AddAppointment extends Fragment {
     EditText message;
     EditText time;
     EditText id;
-    EditText member;
+    Spinner member;
     View v;
     AppointmentDao appointmentDao;
+    ContactDao contactDao;
     
     @Nullable
     @Override
@@ -35,6 +41,7 @@ public class AddAppointment extends Fragment {
         v = inflater.inflate(R.layout.fragment_add_appointment, container, false);
         DB db = Room.databaseBuilder(requireContext(), DB.class, "bookings").build();
         appointmentDao = db.appointmentDao();
+        contactDao = db.contactDao();
     
         v.findViewById(R.id.button_add_appointment).setOnClickListener(v13 -> addAppointment());
         
@@ -50,6 +57,8 @@ public class AddAppointment extends Fragment {
         this.time = v.findViewById(R.id.input_time);
         this.id = v.findViewById(R.id.input_id);
         this.member = v.findViewById(R.id.input_member);
+        
+        new RetrieveContactsAsyncTask().execute();
     }
     
     private void addAppointment() {
@@ -57,7 +66,7 @@ public class AddAppointment extends Fragment {
         String place = this.place.getText().toString();
         String message = this.message.getText().toString();
         String time = this.time.getText().toString();
-        String member = this.member.getText().toString();
+        String member = this.member.getSelectedItem().toString();
         
         Appointment appointment = new Appointment(place, message, date, time, member);
         Utils.validateAppointmentFields(appointment);
@@ -72,6 +81,28 @@ public class AddAppointment extends Fragment {
         protected Void doInBackground(Appointment... appointments) {
             appointmentDao.insert(appointments[0]);
             return null;
+        }
+    }
+    
+    private class RetrieveContactsAsyncTask extends AsyncTask<Void, Void, List<Contact>> {
+        @Override
+        protected List<Contact> doInBackground(Void... voids) {
+            return contactDao.getAllContacts();
+        }
+    
+        protected void onPostExecute(List<Contact> contactList) {
+            super.onPostExecute(contactList);
+            if (contactList != null) {
+                
+                List<String> contactNames = new ArrayList<>();
+                for (Contact contact : contactList) {
+                    contactNames.add(contact.getName());
+                }
+                
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, contactNames);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                member.setAdapter(adapter);
+            }
         }
     }
     

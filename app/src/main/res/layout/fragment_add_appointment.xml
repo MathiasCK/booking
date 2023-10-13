@@ -104,14 +104,11 @@
         android:layout_height="wrap_content"
         android:text="@string/appointment_member" />
 
-    <EditText
+    <Spinner
         android:layout_below="@+id/lbl_member"
         android:id="@+id/input_member"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:inputType="text"
-        tools:ignore="LabelFor"
         android:hint="@string/hint_appointment_member"
         />
 
