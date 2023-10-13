@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -47,7 +48,7 @@ public class Contacts extends Fragment {
         
         @Override
         protected void onPostExecute(List<Contact> contacts) {
-            ContactAdapter customAdapter = new ContactAdapter(requireContext(), R.layout.contact_row, contacts);
+            ContactAdapter customAdapter = new ContactAdapter(requireContext(), R.layout.contact_row, contacts, contactDao);
             showContacts.setAdapter(customAdapter);
         }
     }

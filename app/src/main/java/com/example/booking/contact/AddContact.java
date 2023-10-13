@@ -45,11 +45,9 @@ public class AddContact extends Fragment {
     private void initButtons() {
         button_add_contact = v.findViewById(R.id.button_add_contact);
         button_update_contact = v.findViewById(R.id.button_update_contact);
-        button_delete_contact = v.findViewById(R.id.button_delete_contact);
     
         button_add_contact.setOnClickListener(v13 -> addContact());
         button_update_contact.setOnClickListener(v12 -> updateContact());
-        button_delete_contact.setOnClickListener(v1 -> deleteContact());
     }
     
     private void initTextFields() {
@@ -83,16 +81,6 @@ public class AddContact extends Fragment {
         clearContactFields();
     }
     
-    private void deleteContact() {
-        long id = Long.parseLong(this.id.getText().toString());
-        Contact contact = new Contact();
-        contact.set_ID(id);
-        
-        new DeleteContactAsyncTask().execute(id);
-    
-        clearContactFields();
-    }
-    
     private class AddContactAsyncTask extends AsyncTask<Contact, Void, Void> {
         @Override
         protected Void doInBackground(Contact... contacts) {
@@ -105,16 +93,6 @@ public class AddContact extends Fragment {
         @Override
         protected Void doInBackground(Contact... contacts) {
             contactDao.update(contacts[0]);
-            return null;
-        }
-    }
-    
-    private class DeleteContactAsyncTask extends AsyncTask<Long, Void, Void> {
-        @Override
-        protected Void doInBackground(Long... ids) {
-            Contact contact = new Contact();
-            contact.set_ID(ids[0]);
-            contactDao.delete(contact);
             return null;
         }
     }
