@@ -47,8 +47,8 @@ public class Contacts extends Fragment {
         
         @Override
         protected void onPostExecute(List<Contact> contacts) {
-            ArrayAdapter<Contact> arrayAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, contacts);
-            showContacts.setAdapter(arrayAdapter);
+            ContactAdapter customAdapter = new ContactAdapter(requireContext(), R.layout.contact_row, contacts);
+            showContacts.setAdapter(customAdapter);
         }
     }
 }

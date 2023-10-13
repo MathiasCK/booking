@@ -16,17 +16,17 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="Name" />
+        android:text="Name: " />
 
     <TextView
         android:id="@+id/contactPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Phone" />
+        android:text="Phone: " />
 
     <Button
         android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete" />
+        android:text="Slett" />
 </LinearLayout>
