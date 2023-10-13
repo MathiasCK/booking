@@ -64,7 +64,7 @@ public class AddAppointment extends Fragment {
     
         new AddAppointmentAsync().execute(appointment);
     
-        clearAppointmentFields();
+        Utils.clearAppointmentFields(v);
     }
     
     private class AddAppointmentAsync extends AsyncTask<Appointment, Void, Void> {
@@ -81,22 +81,5 @@ public class AddAppointment extends Fragment {
             appointmentDao.update(appointments[0]);
             return null;
         }
-    }
-    
-    
-    private void clearAppointmentFields() {
-        TextView date = v.findViewById(R.id.input_date);
-        TextView place = v.findViewById(R.id.input_place);
-        TextView message = v.findViewById(R.id.input_message);
-        TextView time = v.findViewById(R.id.input_time);
-        TextView id = v.findViewById(R.id.input_id);
-        TextView member = v.findViewById(R.id.input_member);
-        
-        date.setText("");
-        place.setText("");
-        message.setText("");
-        time.setText("");
-        id.setText("");
-        member.setText("");
     }
 }

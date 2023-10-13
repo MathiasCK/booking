@@ -1,5 +1,8 @@
 package com.example.booking;
 
+import android.view.View;
+import android.widget.TextView;
+
 import com.example.booking.appointment.Appointment;
 import com.example.booking.contact.Contact;
 
@@ -26,5 +29,31 @@ public class Utils {
                 contact.getPhone() == null || contact.getPhone().isEmpty()) {
             throw new IllegalArgumentException("Appointment fields must not be empty or null");
         }
+    }
+    
+    public static void clearAppointmentFields(View v) {
+        TextView date = v.findViewById(R.id.input_date);
+        TextView place = v.findViewById(R.id.input_place);
+        TextView message = v.findViewById(R.id.input_message);
+        TextView time = v.findViewById(R.id.input_time);
+        TextView id = v.findViewById(R.id.input_id);
+        TextView member = v.findViewById(R.id.input_member);
+        
+        date.setText("");
+        place.setText("");
+        message.setText("");
+        time.setText("");
+        id.setText("");
+        member.setText("");
+    }
+    
+    public static void clearContactFields(View v) {
+        TextView name = v.findViewById(R.id.input_name);
+        TextView phone = v.findViewById(R.id.input_phone);
+        TextView id = v.findViewById(R.id.input_id);
+        
+        name.setText("");
+        phone.setText("");
+        id.setText("");
     }
 }

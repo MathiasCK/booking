@@ -62,8 +62,8 @@ public class UpdateContact extends Fragment {
         Utils.validateContactFields(contact);
         
         new UpdateContactAsyncTask().execute(contact);
-        
-        clearContactFields();
+    
+        Utils.clearContactFields(v);
     }
     
     private class UpdateContactAsyncTask extends AsyncTask<Contact, Void, Void> {
@@ -73,14 +73,5 @@ public class UpdateContact extends Fragment {
             return null;
         }
     }
-    
-    private void clearContactFields() {
-        TextView name = v.findViewById(R.id.input_name);
-        TextView phone = v.findViewById(R.id.input_phone);
-        TextView id = v.findViewById(R.id.input_id);
-        
-        name.setText("");
-        phone.setText("");
-        id.setText("");
-    }
+
 }
