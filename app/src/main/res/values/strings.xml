@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">booking</string>
+    <string name="add_contact_lbl_name">Skriv inn navn*</string>
+    <string name="add_contact_input_name">Navn...</string>
+    <string name="add_contact_lbl_phone">Skriv inn telefonnummer*</string>
+    <string name="add_contact_input_phone">Telefonnummer...</string>
+    <string name="add_contact_lbl_id">Skriv inn id*</string>
+    <string name="add_contact_input_id">Id...</string>
+    <string name="btn_add_contact">Legg til</string>
+    <string name="btn_delete_contact">Slett</string>
+    <string name="btn_update_contact">Oppdater</string>
+    <string name="nav_contacts">K</string>
+    <string name="nav_add_contact">K+</string>
+    <string name="nav_appointments">A</string>
+    <string name="nav_add_appointment">A+</string>
+    <string name="nav_settings">I</string>
+    <string name="message">Sms Melding</string>
+    <string name="turnOnMessage">Slå på sms</string>
+    <string name="saveMessage">Lagre endringer</string>
+    <string name="messageChange">Endre</string>
+    <string name="messageTime">Tidspunkt</string>
+    <string name="appointment_date">Skriv inn dato:</string>
+    <string name="appointment_place">Skriv inn sted:</string>
+    <string name="appointment_time">Skriv inn tidspunkt:</string>
+    <string name="appointment_message">Skriv inn melding</string>
+    <string name="appointment_id">Skriv inn id:</string>
+    <string name="appointment_member">Skriv inn deltaker:</string>
+    <string name="appointment_add">Legg til</string>
+    <string name="appointment_delete">Slett</string>
+    <string name="appointment_update">Oppdater</string>
+    <string name="hint_appointment_date">Dato...</string>
+    <string name="hint_appointment_place">Sted...</string>
+    <string name="hint_appointment_time">Tidaspunkt...</string>
+    <string name="hint_appointment_message">Melding...</string>
+    <string name="hint_appointment_id">Id...</string>
+    <string name="hint_appointment_member">Deltaker...</string>
 </resources>

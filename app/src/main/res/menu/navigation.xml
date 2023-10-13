@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/appointments"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:title="Alle Avtaler"/>
+    <item
+        android:id="@+id/contacts"
+        android:icon="@drawable/ic_baseline_contacts_24"
+        android:title="Alle Kontaker"/>
+    <item
+        android:id="@+id/addContact"
+        android:icon="@drawable/ic_baseline_person_add_24"
+        android:title="Legg/Endre Kontakt"/>
+    <item
+        android:id="@+id/addAppointment"
+        android:icon="@drawable/ic_baseline_add_task_24"
+        android:title="Legg til Avtale"/>
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="Innstillinger"/>
+
+
+
+</menu>
