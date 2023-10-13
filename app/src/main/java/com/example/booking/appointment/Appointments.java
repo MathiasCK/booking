@@ -49,7 +49,7 @@ public class Appointments extends Fragment {
         
         @Override
         protected void onPostExecute(List<Appointment> appointments) {
-            AppointmentAdapter customAdapter = new AppointmentAdapter(requireContext(), R.layout.appointment_row, appointments, appointmentDao);
+            AppointmentAdapter customAdapter = new AppointmentAdapter(requireContext(), R.layout.appointment_row, appointments, appointmentDao, getChildFragmentManager());
             showAppointments.setAdapter(customAdapter);
         }
     }

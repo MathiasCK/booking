@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.booking.R;
+import com.example.booking.Utils;
 
 import java.util.List;
 
@@ -26,11 +27,14 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
     private final int resource;
     private final ContactDao contactDao;
     
-    public ContactAdapter(Context context, int resource, List<Contact> contacts, ContactDao contactDao) {
+    private FragmentManager fragmentManager;
+    
+    public ContactAdapter(Context context, int resource, List<Contact> contacts, ContactDao contactDao, FragmentManager fragmentManager) {
         super(context, resource, contacts);
         this.context = context;
         this.resource = resource;
         this.contactDao = contactDao;
+        this.fragmentManager = fragmentManager;
     }
     
     @NonNull
@@ -54,8 +58,14 @@ public class ContactAdapter extends ArrayAdapter<Contact> {
             contact_phone.setText("Tel: " + contact.getPhone());
     
             button_delete_contact.setOnClickListener(view -> {
-                new DeleteContactAsyncTask().execute(contact.get_ID());
-                remove(contact);
+                try {
+                    new DeleteContactAsyncTask().execute(contact.get_ID());
+                    remove(contact);
+                    
+                    Utils.showCustomDialog(fragmentManager, "Success", "Kontakt slettet!");
+                } catch (Exception e) {
+                    Utils.showCustomDialog(fragmentManager, "Error", e.getMessage());
+                }
             });
     
             button_update_contact.setOnClickListener(v -> {

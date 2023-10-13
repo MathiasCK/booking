@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.room.Room;
 
 import com.example.booking.DB;
+import com.example.booking.MyDialogFragment;
 import com.example.booking.R;
 import com.example.booking.Utils;
 
@@ -36,7 +37,6 @@ public class AddContact extends Fragment {
         v.findViewById(R.id.button_add_contact).setOnClickListener(v13 -> addContact());
         
         initTextFields();
-        
         return v;
     }
     
@@ -47,15 +47,25 @@ public class AddContact extends Fragment {
     }
     
     private void addContact() {
-        String name = this.name.getText().toString();
-        String phone = this.phone.getText().toString();
-        
-        Contact contact = new Contact(name, phone);
-        Utils.validateContactFields(contact);
-        
-        new AddContactAsyncTask().execute(contact);
-        
-        Utils.clearContactFields(v);
+        try {
+            String name = this.name.getText().toString();
+            String phone = this.phone.getText().toString();
+            
+            if (name.isEmpty() || phone.isEmpty()) {
+                throw new Exception("Alle felt må fylles ut!");
+            }
+    
+            Contact contact = new Contact(name, phone);
+            Utils.validateContactFields(contact);
+    
+            new AddContactAsyncTask().execute(contact);
+    
+            Utils.clearContactFields(v);
+            
+            Utils.showCustomDialog(getChildFragmentManager(), "Success", "Kontakt opprettet!");
+        } catch (Exception e) {
+            Utils.showCustomDialog(getChildFragmentManager(), "Error", e.getMessage());
+        }
     }
     
     private class AddContactAsyncTask extends AsyncTask<Contact, Void, Void> {

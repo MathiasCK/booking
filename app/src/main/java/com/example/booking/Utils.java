@@ -1,7 +1,10 @@
 package com.example.booking;
 
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
+
+import androidx.fragment.app.FragmentManager;
 
 import com.example.booking.appointment.Appointment;
 import com.example.booking.contact.Contact;
@@ -55,5 +58,10 @@ public class Utils {
         name.setText("");
         phone.setText("");
         id.setText("");
+    }
+    
+    public static void showCustomDialog(FragmentManager fragmentManager, String headerText, String bodyText) {
+        MyDialogFragment dialog = MyDialogFragment.newInstance(headerText, bodyText);
+        dialog.show(fragmentManager, "CustomDialogFragment");
     }
 }

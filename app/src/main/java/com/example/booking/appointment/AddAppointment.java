@@ -62,18 +62,28 @@ public class AddAppointment extends Fragment {
     }
     
     private void addAppointment() {
-        String date = this.date.getText().toString();
-        String place = this.place.getText().toString();
-        String message = this.message.getText().toString();
-        String time = this.time.getText().toString();
-        String member = this.member.getSelectedItem().toString();
-        
-        Appointment appointment = new Appointment(place, message, date, time, member);
-        Utils.validateAppointmentFields(appointment);
+        try {
+            String date = this.date.getText().toString();
+            String place = this.place.getText().toString();
+            String message = this.message.getText().toString();
+            String time = this.time.getText().toString();
+            String member = this.member.getSelectedItem().toString();
     
-        new AddAppointmentAsync().execute(appointment);
+            if (date.isEmpty() || place.isEmpty() || message.isEmpty() || time.isEmpty()) {
+                throw new Exception("Alle felt må fylles ut!");
+            }
     
-        Utils.clearAppointmentFields(v);
+            Appointment appointment = new Appointment(place, message, date, time, member);
+            Utils.validateAppointmentFields(appointment);
+    
+            new AddAppointmentAsync().execute(appointment);
+    
+            Utils.clearAppointmentFields(v);
+            
+            Utils.showCustomDialog(getChildFragmentManager(), "Success", "Avtale opprettet!");
+        } catch (Exception e) {
+            Utils.showCustomDialog(getChildFragmentManager(), "Error", e.getMessage());
+        }
     }
     
     private class AddAppointmentAsync extends AsyncTask<Appointment, Void, Void> {

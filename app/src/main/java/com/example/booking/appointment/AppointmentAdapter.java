@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.booking.R;
+import com.example.booking.Utils;
 
 import java.util.List;
 
@@ -26,11 +27,14 @@ public class AppointmentAdapter extends ArrayAdapter<Appointment> {
     private final int resource;
     private final AppointmentDao appointmentDao;
     
-    public AppointmentAdapter(Context context, int resource, List<Appointment> contacts, AppointmentDao appointmentDao) {
+    private FragmentManager fragmentManager;
+    
+    public AppointmentAdapter(Context context, int resource, List<Appointment> contacts, AppointmentDao appointmentDao, FragmentManager fragmentManager) {
         super(context, resource, contacts);
         this.context = context;
         this.resource = resource;
         this.appointmentDao = appointmentDao;
+        this.fragmentManager = fragmentManager;
     }
     
     @NonNull
@@ -58,8 +62,14 @@ public class AppointmentAdapter extends ArrayAdapter<Appointment> {
             appointment_members.setText("Personer: " + appointment.getMessage());
     
             button_delete_appointment.setOnClickListener(view -> {
-                new DeleteContactAsyncTask().execute(appointment.get_ID());
-                remove(appointment);
+                try {
+                    new DeleteContactAsyncTask().execute(appointment.get_ID());
+                    remove(appointment);
+    
+                    Utils.showCustomDialog(fragmentManager, "Success", "Avtale slettet!");
+                } catch (Exception e) {
+                    Utils.showCustomDialog(fragmentManager, "Error", e.getMessage());
+                }
             });
     
             button_update_appointment.setOnClickListener(v -> {

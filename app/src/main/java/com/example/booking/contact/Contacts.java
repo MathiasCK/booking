@@ -16,6 +16,7 @@ import androidx.room.Room;
 
 import com.example.booking.DB;
 import com.example.booking.R;
+import com.example.booking.Utils;
 
 
 import java.util.List;
@@ -35,7 +36,11 @@ public class Contacts extends Fragment {
 
         showContacts = v.findViewById(R.id.contacts);
     
-        new LoadContactsAsyncTask().execute();
+        try {
+            new LoadContactsAsyncTask().execute();
+        } catch (Exception e) {
+            Utils.showCustomDialog(getChildFragmentManager(), "Error", e.getMessage());
+        }
     
         return v;
     }
@@ -48,7 +53,7 @@ public class Contacts extends Fragment {
         
         @Override
         protected void onPostExecute(List<Contact> contacts) {
-            ContactAdapter customAdapter = new ContactAdapter(requireContext(), R.layout.contact_row, contacts, contactDao);
+            ContactAdapter customAdapter = new ContactAdapter(requireContext(), R.layout.contact_row, contacts, contactDao, getChildFragmentManager());
             showContacts.setAdapter(customAdapter);
         }
     }

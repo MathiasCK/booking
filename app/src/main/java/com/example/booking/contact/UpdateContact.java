@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -54,16 +53,26 @@ public class UpdateContact extends Fragment {
     }
     
     private void updateContact() {
-        String name = this.contactName.getText().toString();
-        String phone = this.contactPhone.getText().toString();
-        long _ID = this.contact.get_ID();
-        
-        Contact contact = new Contact(_ID, name, phone);
-        Utils.validateContactFields(contact);
-        
-        new UpdateContactAsyncTask().execute(contact);
+        try {
+            String name = this.contactName.getText().toString();
+            String phone = this.contactPhone.getText().toString();
+            long _ID = this.contact.get_ID();
     
-        Utils.clearContactFields(v);
+            if (name.isEmpty() || phone.isEmpty()) {
+                throw new Exception("Alle felt må fylles ut!");
+            }
+    
+            Contact contact = new Contact(_ID, name, phone);
+            Utils.validateContactFields(contact);
+    
+            new UpdateContactAsyncTask().execute(contact);
+    
+            Utils.clearContactFields(v);
+        
+            Utils.showCustomDialog(getChildFragmentManager(), "Success", "Kontakt oppdatert!");
+        } catch (Exception e) {
+            Utils.showCustomDialog(getChildFragmentManager(), "Error", e.getMessage());
+        }
     }
     
     private class UpdateContactAsyncTask extends AsyncTask<Contact, Void, Void> {

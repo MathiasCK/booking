@@ -34,4 +34,5 @@
     <string name="hint_appointment_message">Melding...</string>
     <string name="hint_appointment_id">Id...</string>
     <string name="hint_appointment_member">Deltaker...</string>
+    <string name="btn_dialog_close">Lukk</string>
 </resources>

@@ -64,18 +64,28 @@ public class UpdateAppointment extends Fragment {
     }
     
     private void updateAppointment() {
-        String date = this.date.getText().toString();
-        String place = this.place.getText().toString();
-        String message = this.message.getText().toString();
-        String time = this.time.getText().toString();
-        String member = this.member.getText().toString();
-        
-        Appointment appointment = new Appointment(this.appointment.get_ID(), place, message, date, time, member);
-        Utils.validateAppointmentFields(appointment);
-        
-        new UpdateAppointmentAsyncTask().execute(appointment);
+        try {
+            String date = this.date.getText().toString();
+            String place = this.place.getText().toString();
+            String message = this.message.getText().toString();
+            String time = this.time.getText().toString();
+            String member = this.member.getText().toString();
     
-        Utils.clearAppointmentFields(v);
+            if (date.isEmpty() || place.isEmpty() || message.isEmpty() || time.isEmpty()) {
+                throw new Exception("Alle felt må fylles ut!");
+            }
+            
+            Appointment appointment = new Appointment(this.appointment.get_ID(), place, message, date, time, member);
+            Utils.validateAppointmentFields(appointment);
+            
+            new UpdateAppointmentAsyncTask().execute(appointment);
+        
+            Utils.clearAppointmentFields(v);
+            
+            Utils.showCustomDialog(getChildFragmentManager(), "Success", "Avtale oppdatert!");
+        } catch (Exception e) {
+            Utils.showCustomDialog(getChildFragmentManager(), "Error", e.getMessage());
+        }
     }
     
     private class UpdateAppointmentAsyncTask extends AsyncTask<Appointment, Void, Void> {
