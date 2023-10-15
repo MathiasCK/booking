@@ -1,5 +1,9 @@
 package com.example.booking;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -66,14 +70,6 @@ public class Utils {
         id.setText("");
     }
     
-    public static void clearSettingsFields(View v) {
-        EditText settings_phone = v.findViewById(R.id.settings_phone);
-        EditText settings_message = v.findViewById(R.id.settings_message);
-        
-        settings_phone.setText("");
-        settings_message.setText("");
-    }
-    
     public static void showCustomDialog(FragmentManager fragmentManager, String headerText, String bodyText) {
         MyDialogFragment dialog = MyDialogFragment.newInstance(headerText, bodyText);
         dialog.show(fragmentManager, "CustomDialogFragment");
@@ -85,6 +81,7 @@ public class Utils {
         
         return matcher.matches();
     }
+    
     /*
     public void sendMessage() {
         String phoneNumber = settings_phone.getText().toString();
