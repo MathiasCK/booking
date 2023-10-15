@@ -1,9 +1,11 @@
 package com.example.booking;
 
+import android.telephony.SmsManager;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.FragmentManager;
 
@@ -73,4 +75,21 @@ public class Utils {
         MyDialogFragment dialog = MyDialogFragment.newInstance(headerText, bodyText);
         dialog.show(fragmentManager, "CustomDialogFragment");
     }
+    /*
+    public void sendMessage() {
+        String phoneNumber = settings_phone.getText().toString();
+        String message = settings_message.getText().toString();
+        if (!phoneNumber.isEmpty() && !message.isEmpty()) {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(phoneNumber, null, message, null, null);
+            
+            String msg = String.format("SMS sent to %s", phoneNumber);
+            Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show();
+            
+            Utils.clearSettingsFields(v);
+        } else {
+            Toast.makeText(requireContext(), "Du har ikke gitt tilatelse til å sende SMS", Toast.LENGTH_SHORT).show();
+            button_send.setEnabled(false);
+        }
+    }*/
 }

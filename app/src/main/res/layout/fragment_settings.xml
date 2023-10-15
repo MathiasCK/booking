@@ -8,7 +8,15 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Phone EditText -->
+    <Switch
+        android:id="@+id/message_switch"
+        android:text="@string/turnOnMessage"
+        android:textSize="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
     <EditText
         android:id="@+id/settings_phone"
         android:layout_width="match_parent"
@@ -17,7 +25,6 @@
         android:inputType="phone"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Message EditText -->
     <EditText
         android:id="@+id/settings_message"
         android:layout_width="match_parent"
@@ -27,7 +34,6 @@
         android:lines="4"
         app:layout_constraintTop_toBottomOf="@+id/settings_phone" />
 
-    <!-- Send Button -->
     <Button
         android:id="@+id/settings_send"
         android:layout_width="match_parent"
