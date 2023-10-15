@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -33,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
         
         initNavLinks();
         initAlarmService();
+    
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("SEND_SMS_TIME_OF_DAY_HOUR", "06");
+        editor.putString("SEND_SMS_TIME_OF_DAY_MINUTE", "00");
+        editor.apply();
     }
     private void initNavLinks() {
         Button button_appointments = findViewById(R.id.button_appointments);

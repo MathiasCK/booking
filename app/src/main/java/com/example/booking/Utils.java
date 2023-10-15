@@ -12,6 +12,9 @@ import androidx.fragment.app.FragmentManager;
 import com.example.booking.appointment.Appointment;
 import com.example.booking.contact.Contact;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Utils {
     public static void validateAppointmentFields(Appointment appointment) {
         if (appointment == null) {
@@ -74,6 +77,13 @@ public class Utils {
     public static void showCustomDialog(FragmentManager fragmentManager, String headerText, String bodyText) {
         MyDialogFragment dialog = MyDialogFragment.newInstance(headerText, bodyText);
         dialog.show(fragmentManager, "CustomDialogFragment");
+    }
+    
+    public static boolean isValidTime(String input) {
+        Pattern pattern = Pattern.compile("^([01][0-9]|2[0-4]):([0-5][0-9])$");
+        Matcher matcher = pattern.matcher(input);
+        
+        return matcher.matches();
     }
     /*
     public void sendMessage() {
