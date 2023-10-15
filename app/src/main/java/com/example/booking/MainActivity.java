@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("SEND_SMS_TIME_OF_DAY_HOUR", "06");
         editor.putString("SEND_SMS_TIME_OF_DAY_MINUTE", "00");
+        editor.putString("DEFAULT_SMS", "Du har en avtale!");
         editor.apply();
     }
     private void initNavLinks() {

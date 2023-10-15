@@ -25,8 +25,10 @@ public class Settings extends Fragment {
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     Switch messageSwitch;
     EditText message_input_time;
+    EditText message_input_message;
     SharedPreferences sharedPreferences;
     String currentTime;
+    String currentMessage;
     
     @Nullable
     @Override
@@ -35,6 +37,7 @@ public class Settings extends Fragment {
          sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", requireContext().MODE_PRIVATE);
          
          currentTime = this.sharedPreferences.getString("SEND_SMS_TIME_OF_DAY_HOUR", "06") + ":" +this.sharedPreferences.getString("SEND_SMS_TIME_OF_DAY_MINUTE", "06");
+         currentMessage = this.sharedPreferences.getString("DEFAULT_SMS", "Du har en avtale!");
         
         if (ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{android.Manifest.permission.SEND_SMS}, SEND_SMS_PERMISSION_REQUEST_CODE);
@@ -42,7 +45,10 @@ public class Settings extends Fragment {
         
         messageSwitch = v.findViewById(R.id.message_switch);
         message_input_time = v.findViewById(R.id.message_input_time);
+        message_input_message = v.findViewById(R.id.message_input_message);
+        
         message_input_time.setText(currentTime);
+        message_input_message.setText(currentMessage);
         
         v.findViewById(R.id.settings_update).setOnClickListener(v -> updateSettings());
         
@@ -70,13 +76,30 @@ public class Settings extends Fragment {
     }
     
     public void updateSettings() {
+        if (updateTime() || updateMessage()) {
+            Toast.makeText(requireContext(), "Preferanser oppdatert", Toast.LENGTH_SHORT).show();
+        }
+    }
+    
+    public boolean updateMessage() {
+        String input = message_input_message.getText().toString();
+    
+        if (input.equals(currentMessage)) return false;
+    
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("DEFAULT_SMS", input);
+        
+        return true;
+    }
+    
+    public boolean updateTime() {
         String input = message_input_time.getText().toString();
-        
-        if (input.equals(currentTime)) return;
-        
+    
+        if (input.equals(currentTime)) return false;
+    
         if(!Utils.isValidTime(input)) {
             Toast.makeText(requireContext(), "Tid format ikke gyldig", Toast.LENGTH_SHORT).show();
-            return;
+            return false;
         }
     
         String[] parts = input.split(":");
@@ -84,9 +107,8 @@ public class Settings extends Fragment {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("SEND_SMS_TIME_OF_DAY_HOUR", parts[0]);
         editor.putString("SEND_SMS_TIME_OF_DAY_MINUTE", parts[1]);
-    
-        String msg = String.format("Time updated from %s to %s", currentTime, input);
-        Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show();
+        
+        return true;
     }
     
     @Override

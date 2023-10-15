@@ -33,11 +33,29 @@
         tools:ignore="LabelFor"
         android:focusable="true" />
 
+    <TextView
+        android:id="@+id/message_lbl_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Skriv inn melding" />
+
+    <EditText
+        android:id="@+id/message_input_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/message_lbl_time"
+        android:clickable="true"
+        android:hint="Melding"
+        tools:ignore="LabelFor"
+        android:focusable="true" />
+
     <Button
         android:id="@+id/settings_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Oppdater"
-        app:layout_constraintTop_toBottomOf="@+id/settings_message" />
+        app:layout_constraintTop_toBottomOf="@+id/settings_message"
+        android:textColor="@color/white"
+        android:background="@color/green"/>
 
 </LinearLayout>
