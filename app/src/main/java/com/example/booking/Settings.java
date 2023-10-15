@@ -129,18 +129,14 @@ public class Settings extends Fragment {
         }
     }
     public void initAlarmService() {
-        // Get the AlarmManager service
         AlarmManager alarmManager = (AlarmManager) requireContext().getSystemService(Context.ALARM_SERVICE);
         
-        // Create an intent to the AlarmReceiver
         Intent intent = new Intent(requireContext(), AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(requireContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
         
-        // Set the interval for the alarm (e.g., every 24 hours)
-        long intervalMillis = 24 * 60 * 60 * 1000; // 24 hours
+        long intervalMillis = 24 * 60 * 60 * 1000;
         long triggerAtMillis = System.currentTimeMillis() + intervalMillis;
         
-        // Set the repeating alarm
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, triggerAtMillis, intervalMillis, pendingIntent);
     }
 
