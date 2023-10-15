@@ -15,8 +15,6 @@
         android:textColor="#000000" />
 
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -41,6 +39,23 @@
                 android:hint="@string/hint_appointment_date"/>
 
             <TextView
+                android:id="@+id/lbl_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/input_place"
+                android:text="@string/appointment_time" />
+
+            <EditText
+                android:id="@+id/input_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lbl_time"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="@string/hint_appointment_time"
+                tools:ignore="LabelFor" />
+
+            <TextView
                 android:layout_below="@+id/input_date"
                 android:id="@+id/lbl_place"
                 android:layout_width="match_parent"
@@ -56,24 +71,6 @@
                 android:inputType="text"
                 tools:ignore="LabelFor"
                 android:hint="@string/hint_appointment_place"/>
-
-            <TextView
-                android:layout_below="@+id/input_place"
-                android:id="@+id/lbl_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/appointment_time" />
-
-            <EditText
-                android:layout_below="@+id/lbl_time"
-                android:id="@+id/input_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:inputType="time"
-                tools:ignore="LabelFor"
-                android:hint="@string/hint_appointment_time"
-                />
 
             <TextView
                 android:id="@+id/lbl_message"

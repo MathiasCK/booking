@@ -1,6 +1,7 @@
 package com.example.booking.appointment;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -60,6 +62,7 @@ public class AddAppointment extends Fragment {
         this.member = v.findViewById(R.id.input_member);
         
         this.date.setOnClickListener(v -> showDatePicker());
+        this.time.setOnClickListener(v -> showTimePicker());
         new RetrieveContactsAsyncTask().execute();
     }
     
@@ -73,6 +76,23 @@ public class AddAppointment extends Fragment {
                 2023, 0, 1
         );
         datePickerDialog.show();
+    }
+    
+    private void showTimePicker() {
+        int hour = 12;
+        int minute = 0;
+        
+        TimePickerDialog timePickerDialog = new TimePickerDialog(
+                requireContext(),
+                (view, selectedHour, selectedMinute) -> {
+                    String selectedTime = String.format("%02d:%02d", selectedHour, selectedMinute);
+                    time.setText(selectedTime);
+                },
+                hour,
+                minute,
+                true
+        );
+        timePickerDialog.show();
     }
     
     private void addAppointment() {
