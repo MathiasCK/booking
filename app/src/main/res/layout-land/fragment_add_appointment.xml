@@ -13,6 +13,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#000000" />
+
     <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -34,8 +35,8 @@
                 android:id="@+id/input_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:inputType="date"
+                android:focusable="false"
+                android:clickable="true"
                 tools:ignore="LabelFor"
                 android:hint="@string/hint_appointment_date"/>
 

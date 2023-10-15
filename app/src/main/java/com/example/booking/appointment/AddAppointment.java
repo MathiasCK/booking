@@ -1,5 +1,6 @@
 package com.example.booking.appointment;
 
+import android.app.DatePickerDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -58,7 +59,20 @@ public class AddAppointment extends Fragment {
         this.id = v.findViewById(R.id.input_id);
         this.member = v.findViewById(R.id.input_member);
         
+        this.date.setOnClickListener(v -> showDatePicker());
         new RetrieveContactsAsyncTask().execute();
+    }
+    
+    private void showDatePicker() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(
+                requireContext(),
+                (view, year, month, dayOfMonth) -> {
+                    String selectedDate = String.format("%04d-%02d-%02d", year, month + 1, dayOfMonth);
+                    date.setText(selectedDate);
+                },
+                2023, 0, 1
+        );
+        datePickerDialog.show();
     }
     
     private void addAppointment() {
