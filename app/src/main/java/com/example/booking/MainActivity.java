@@ -5,10 +5,12 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.booking.appointment.AddAppointment;
@@ -22,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     AddContact addContact = new AddContact();
     Appointments appointments = new Appointments();
     AddAppointment addAppointment = new AddAppointment();
-    
     Settings settings = new Settings();
     
     @Override
@@ -33,8 +34,12 @@ public class MainActivity extends AppCompatActivity {
         displayFragment(contacts);
         
         initNavLinks();
-        initAlarmService();
-    
+        
+        if (
+        ContextCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
+            initAlarmService();
+        }
+        
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("SEND_SMS_TIME_OF_DAY_HOUR", "06");
