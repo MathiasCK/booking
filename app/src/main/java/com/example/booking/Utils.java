@@ -2,6 +2,7 @@ package com.example.booking;
 
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.fragment.app.FragmentManager;
@@ -58,6 +59,14 @@ public class Utils {
         name.setText("");
         phone.setText("");
         id.setText("");
+    }
+    
+    public static void clearSettingsFields(View v) {
+        EditText settings_phone = v.findViewById(R.id.settings_phone);
+        EditText settings_message = v.findViewById(R.id.settings_message);
+        
+        settings_phone.setText("");
+        settings_message.setText("");
     }
     
     public static void showCustomDialog(FragmentManager fragmentManager, String headerText, String bodyText) {

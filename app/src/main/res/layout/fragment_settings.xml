@@ -1,75 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/message"
-        android:textSize="30sp"
-        android:gravity="center_horizontal" />
-    <TextView
-        android:id="@+id/txt_message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:gravity="center_horizontal" />
-
+    <!-- Phone EditText -->
     <EditText
-        android:id="@+id/txt_edit"
+        android:id="@+id/settings_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints="Rediger ..."
-        android:inputType="text"
-        tools:ignore="LabelFor" />
+        android:hint="Phone"
+        android:inputType="phone"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/messageTime"
-        android:textSize="30sp"
-        android:gravity="center_horizontal" />
-    <TextView
-        android:id="@+id/view_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:gravity="center_horizontal" />
-
+    <!-- Message EditText -->
     <EditText
-        android:id="@+id/view_edit"
+        android:id="@+id/settings_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:autofillHints="Rediger ..."
-        android:inputType=""
-        tools:ignore="LabelFor" />
+        android:hint="Message"
+        android:inputType="textMultiLine"
+        android:lines="4"
+        app:layout_constraintTop_toBottomOf="@+id/settings_phone" />
 
+    <!-- Send Button -->
     <Button
-        android:id="@+id/apply_text"
-        android:layout_width="wrap_content"
+        android:id="@+id/settings_send"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/orange"
-        android:text="@string/messageChange"
-        android:textColor="@color/white" />
-    <Switch
-        android:id="@+id/message_switch"
-        android:text="@string/turnOnMessage"
-        android:textSize="30sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        android:text="Send"
+        app:layout_constraintTop_toBottomOf="@+id/settings_message" />
 
-    <Button
-        android:id="@+id/btn_save_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="@color/blue_200"
-        android:text="@string/saveMessage"
-        android:textColor="@color/white" />
 </LinearLayout>
